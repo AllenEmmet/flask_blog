@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %} Post {% endblock %}
+{% block content %}
+<div class="form-wrapper p-4">
+    <form action='/publish' method="POST">
+        <fieldset>
+            <legend>Create a Post</legend>
+            <label for="title">Title</label>
+            <br />
+            <input type="text" name="title" id="title" />
+            <br />
+            <br />
+            <label for="content">Content</label>
+            <br />
+            <input type="text" id="content" name="content" />
+            <br />
+            <br />
+            <input type="submit" value="Submit" />
+            <br />
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="wrapper p-4">
+    {% for post in posts%}
+    <div class="card">
+        <div class="card-body">
+            {% set post_user = User.query.get(post.user_id) %}
+            {% set dt = post.date_posted.strftime('%B %d, %Y')%}
+            <div class="card-title d-flex justify-content-between">
+                <h5 >{{post_user.username}}</h5>
+                <p>{{dt}}</p>
+            </div>
+            <h3 class="'card-tite">{{post.title}}</h3>
+            <p class="card-content">{{post.content}}</p>
+            <!-- The delete functionality isn't complete yet--I ran out of time to edit the model -->
+            <!-- {% if user.id == post_user.id:%}
+            <button>Delete</button>
+            {% endif %} -->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

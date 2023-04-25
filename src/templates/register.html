@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block title %} Register {% endblock %}
+{% block content %}
+<div class="form-wrapper p-4">
+    <!-- {% if form.errors %}
+    <ul class="errors">
+    {% for error in form.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %} -->
+    {% if error: %}
+    <h2 class="alert alert-primary">{{error}}</h2>
+    {% endif %}
+    <form action='/register' method="POST">
+        {{ form.csrf_token }}
+        <fieldset>
+            <legend>Sign Up</legend>
+            <div class="form-group">
+                <label class="form-text" for="username">Name</label>
+                <br />
+                <input class="form-control" type="text" id="username" name="username" />
+                <br />
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="form-text" for="email">Email</label>
+                <br />
+                <input class="form-control" type="email" name="email" id="email" />
+                <br />
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="form-text" for="password">Password</label>
+                <br />
+                <input class="form-control" type="text" id="password" name="password" />
+                <br />
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="form-text" for="confirm_password">Confirm Password</label>
+                <br />
+                <input class="form-control" type="text" id="confirm_password" name="confirm_password" />
+                <br />
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="form-text" for="usertype">User Type:</label>
+                <br />
+                <label class="form-text" for="admin">Admin</label>
+                <input class="form-check-input" type="radio" id="admin" name="usertype" value="admin">
+                <label class="form-text" for="reg_user">Regular User</label>
+                <input class="form-check-input" type="radio" id="reg_user" name="usertype" value="reg_user">
+                <br />
+                <br />
+            </div>
+            <input class="form-control" type="submit" value="Submit" />
+            <br />
+        </fieldset>
+    </form>
+    <span class="form-text">Already have an account? <a href="/login">Log In</a></span>
+</div>
+{% endblock %}
